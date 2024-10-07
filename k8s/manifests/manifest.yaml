@@ -1,8 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app
+  name: playzuno-demo
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: harbor.apps.estreetz.com/playzuno/playzuno-demo
+    argocd-image-updater.argoproj.io/harbor.apps.estreetz.com/playzuno/playzuno-demo.update-strategy: latest
 spec:
   project: default
   source:

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playzuno-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playzuno-demo
+  template:
+    metadata:
+      labels:
+        app: playzuno-demo
+    spec:
+      containers:
+        - name: playzuno-demo
+          image: harbor.apps.estreetz.com/playzuno/playzuno-demo:latest
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: harbor-secret

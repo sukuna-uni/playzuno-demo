@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: playzuno-demo
+  namespace: default
+spec:
+  selector:
+    app: playzuno-demo
+  ports:
+    - protocol: TCP
+      port: 80 # Service port
+      targetPort: 8080 # Port where the app is running inside the pod
+  type: ClusterIP # Keeps the service internal to the cluster
