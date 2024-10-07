@@ -4,8 +4,8 @@ metadata:
   name: playzuno-demo
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: harbor.apps.estreetz.com/playzuno/playzuno-demo
-    argocd-image-updater.argoproj.io/harbor.apps.estreetz.com/playzuno/playzuno-demo.update-strategy: latest
+    argocd-image-updater.argoproj.io.update-strategy: "latest"
+    argocd-image-updater.argoproj.io.image-list: "harbor.apps.estreetz.com/playzuno/playzuno-demo"
 spec:
   project: default
   source:
