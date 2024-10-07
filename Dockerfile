@@ -9,7 +9,7 @@ COPY . .
 
 # Build the Go app
 # RUN go mod init app && go build -o playzuno-demo
-RUN GOARCH=amd64 go build -o playzuno-demo
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o playzuno-demo
 
 FROM debian:bullseye-slim
 
