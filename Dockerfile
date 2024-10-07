@@ -18,7 +18,6 @@ COPY --from=builder /app/playzuno-demo /playzuno-demo
 
 # Verify that the binary exists and is executable
 RUN ls -l /playzuno-demo
-RUN file /playzuno-demo
 
 # Expose the port the app will run on
 EXPOSE 8080
