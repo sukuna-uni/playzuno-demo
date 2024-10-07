@@ -4,11 +4,16 @@ metadata:
   name: playzuno-demo-ingress
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: traefik    
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure   
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
+  tls:
+    - hosts:
+        - "*.apps.estreetz.com"
+        - apps.estreetz.com
+      secretName: apps-estreetz-com-wildcard-tls
   rules:
-    - host: playzuno-demo.apps.estreetz.com      
+    - host: playzuno-demo.apps.estreetz.com
       http:
         paths:
           - path: /
@@ -18,7 +23,3 @@ spec:
                 name: playzuno-demo
                 port:
                   number: 80
-  - hosts:
-        - "*.apps.estreetz.com"
-        - apps.estreetz.com
-      secretName: apps-estreetz-com-wildcard-tls
