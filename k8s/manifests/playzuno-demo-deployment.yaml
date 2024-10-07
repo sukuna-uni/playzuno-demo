@@ -15,6 +15,7 @@ spec:
       containers:
         - name: playzuno-demo
           image: harbor.apps.estreetz.com/playzuno/playzuno-demo:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
       imagePullSecrets:
