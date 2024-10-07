@@ -11,11 +11,14 @@ COPY . .
 # RUN go mod init app && go build -o playzuno-demo
 RUN GOARCH=amd64 go build -o playzuno-demo
 
-# Step 2: Use a smaller image for the runtime
-FROM alpine:latest
+FROM debian:bullseye-slim
 
 # Copy the compiled binary from the builder container
 COPY --from=builder /app/playzuno-demo /playzuno-demo
+
+# Verify that the binary exists and is executable
+RUN ls -l /playzuno-demo
+RUN file /playzuno-demo
 
 # Expose the port the app will run on
 EXPOSE 8080
