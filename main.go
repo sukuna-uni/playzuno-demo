@@ -94,6 +94,6 @@ func main() {
 	r.HandleFunc("/api/movies/{id}", deleteMovie).Methods("DELETE")
 
 	// Start the server
-	log.Println("Server running on port 8000")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Println("Server running on port 8080")
+	log.Fatal(http.ListenAndServe(":8080", r))
 }
