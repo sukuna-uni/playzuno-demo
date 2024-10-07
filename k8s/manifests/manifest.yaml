@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/sukuna-uni/playzuno-demo.git"
+    targetRevision: HEAD # Could also be a specific branch/tag
+    path: "k8s/manifests" # The path within the repo where the manifests are located
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
