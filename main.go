@@ -86,6 +86,7 @@ func main() {
 	movies = append(movies, Movie{ID: "1", Title: "Inception", Director: "Christopher Nolan", Year: "2010"})
 	movies = append(movies, Movie{ID: "2", Title: "Interstellar", Director: "Christopher Nolan", Year: "2014"})
 	movies = append(movies, Movie{ID: "3", Title: "GOAT", Director: "Makatha", Year: "2014"})
+	movies = append(movies, Movie{ID: "4", Title: "stranger things", Director: "finally", Year: "2014"})
 
 	// Define the routes
 	r.HandleFunc("/api/movies", getMovies).Methods("GET")
