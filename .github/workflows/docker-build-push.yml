@@ -32,7 +32,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ env.HARBOR_REGISTRY }}/${{ env.HARBOR_PROJECT }}/${{ env.IMAGE_NAME }}:cc944977a8e688d6af62c4c802c94de6e6aac0b0
+            ${{ env.HARBOR_REGISTRY }}/${{ env.HARBOR_PROJECT }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
             ${{ env.HARBOR_REGISTRY }}/${{ env.HARBOR_PROJECT }}/${{ env.IMAGE_NAME }}:latest
   deploy:
     needs: build-and-push
@@ -46,3 +46,12 @@ jobs:
 
       - name: Sync ArgoCD Application
         run: argocd app sync playzuno-demo
+
+      - name: Set up kubectl
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+
+      - name: Update image in Kubernetes
+        run: |
+          kubectl set image deployment/playzuno-demo playzuno-demo=harbor.apps.estreetz.com/playzuno/playzuno-demo:${{ github.sha }}
