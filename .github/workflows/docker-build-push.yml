@@ -54,4 +54,4 @@ jobs:
 
       - name: Update image in Kubernetes
         run: |
-          kubectl set image deployment/playzuno-demo playzuno-demo=harbor.apps.estreetz.com/playzuno/playzuno-demo:${{ github.sha }}
+          kubectl set image deployment/${{ env.IMAGE_NAME }} ${{ env.IMAGE_NAME }}=harbor.apps.estreetz.com/playzuno/${{ env.IMAGE_NAME }}:${{ github.sha }}
